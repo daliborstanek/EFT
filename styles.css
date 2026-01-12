@@ -556,3 +556,63 @@ footer {
         display: none;
     }
 }
+
+/* Contact Form Styles */
+.contact-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(10, 10, 10, 0.8);
+    padding: 2rem;
+    border: 1px solid #333;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    color: #9a8c7d;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: #000;
+    border: 1px solid #444;
+    color: #eee;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #9a8c7d;
+}
+
+.contact-form button {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+}
+
+#form-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    min-height: 1.5rem;
+}
+
+.success-message {
+    color: #4cd137;
+}
+
+.error-message {
+    color: #e84118;
+}

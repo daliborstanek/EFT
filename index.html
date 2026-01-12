@@ -94,46 +94,8 @@
     <section id="mechanics" class="content-section">
         <div class="container">
             <h2 class="section-title">CRITICAL MECHANICS</h2>
-            <div class="mechanics-wrapper">
-
-                <div class="mech-card">
-                    <h3>HEALTH SYSTEM</h3>
-                    <p>You don't just have a health bar. You have body parts.</p>
-                    <ul class="stats-list">
-                        <li><strong>Standard HP:</strong> 440 Total.</li>
-                        <li><strong>Head/Thorax:</strong> If these reach 0 from damage (not bleeding), you die
-                            instantly.</li>
-                        <li><strong>Legs/Arms:</strong> If 0 (blacked), you can't run or aim steady. Taking damage to
-                            blacked limbs spreads damage to the rest of the body.</li>
-                        <li><strong>Medication:</strong> Bandages for bleeds. Splints for fractures. Surgery kits to
-                            repair blacked limbs.</li>
-                    </ul>
-                </div>
-
-                <div class="mech-card">
-                    <h3>AMMO & BALLISTICS</h3>
-                    <p>The gun matters less than the bullet.</p>
-                    <ul class="stats-list">
-                        <li><strong>Penetration:</strong> Higher pen pierces armor. High flesh damage is blocked by
-                            armor but destroys limbs.</li>
-                        <li><strong>Armor Classes:</strong> Rated 1-6. Class 4 is the mid-game standard. Class 6 is
-                            elite.</li>
-                        <li><strong>Tip:</strong> An expensive gun with bad ammo is useless against armored targets.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="mech-card">
-                    <h3>SOUND & AWARENESS</h3>
-                    <p>Sound is your primary sense.</p>
-                    <ul class="stats-list">
-                        <li><strong>Headsets:</strong> In-game headsets compress loud noises (guns) and amplify quiet
-                            ones (footsteps). Always wear one.</li>
-                        <li><strong>Weight:</strong> Being overweight makes you louder and draius stamina faster.</li>
-                        <li><strong>Surface:</strong> Metal and glass are loud. Grass is quieter.</li>
-                    </ul>
-                </div>
-
+            <div class="mechanics-wrapper" id="mechanics-container">
+                <!-- Data will be loaded via AJAX -->
             </div>
         </div>
     </section>
@@ -165,9 +127,34 @@
         </div>
     </section>
 
+    <section id="contact" class="content-section">
+        <div class="container">
+            <h2 class="section-title">CONTACT HQ</h2>
+            <div class="contact-wrapper">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">OPERATOR NAME</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your alias">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">SECURE COMMS (EMAIL)</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">INTEL / REPORT</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Type your message..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">SEND TRANSMISSION</button>
+                </form>
+                <div id="form-message"></div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <p>ESCAPE FROM TARKOV FAN PRESENTATION | 2025</p>
+            <p>ESCAPE FROM TARKOV FAN PRESENTATION | 2026</p>
             <p>ASSETS AND IP BELONG TO BATTLESTATE GAMES.</p>
         </div>
     </footer>

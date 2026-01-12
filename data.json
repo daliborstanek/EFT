@@ -1,0 +1,30 @@
+[
+    {
+        "title": "HEALTH SYSTEM",
+        "description": "You don't just have a health bar. You have body parts.",
+        "stats": [
+            "<strong>Standard HP:</strong> 440 Total.",
+            "<strong>Head/Thorax:</strong> If these reach 0 from damage (not bleeding), you die instantly.",
+            "<strong>Legs/Arms:</strong> If 0 (blacked), you can't run or aim steady. Taking damage to blacked limbs spreads damage to the rest of the body.",
+            "<strong>Medication:</strong> Bandages for bleeds. Splints for fractures. Surgery kits to repair blacked limbs."
+        ]
+    },
+    {
+        "title": "AMMO & BALLISTICS",
+        "description": "The gun matters less than the bullet.",
+        "stats": [
+            "<strong>Penetration:</strong> Higher pen pierces armor. High flesh damage is blocked by armor but destroys limbs.",
+            "<strong>Armor Classes:</strong> Rated 1-6. Class 4 is the mid-game standard. Class 6 is elite.",
+            "<strong>Tip:</strong> An expensive gun with bad ammo is useless against armored targets."
+        ]
+    },
+    {
+        "title": "SOUND & AWARENESS",
+        "description": "Sound is your primary sense.",
+        "stats": [
+            "<strong>Headsets:</strong> In-game headsets compress loud noises (guns) and amplify quiet ones (footsteps). Always wear one.",
+            "<strong>Weight:</strong> Being overweight makes you louder and draius stamina faster.",
+            "<strong>Surface:</strong> Metal and glass are loud. Grass is quieter."
+        ]
+    }
+]
