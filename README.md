@@ -40,7 +40,7 @@ Noví hráči hledající základní orientaci ve hře, fanoušci hry Escape fro
     
 - **Data:** JSON soubory pro čtyři textové sekce
     
-- **AJAX:** načítání obsahu sekcí a seznamu štěňat
+- **AJAX:** načítání obsahu sekcí
     
 - **Backend:** jednoduchý PHP endpoint pro odeslání kontaktního formuláře
     
