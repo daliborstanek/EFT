@@ -38,7 +38,7 @@ Noví hráči hledající základní orientaci ve hře, fanoušci hry Escape fro
 
 - **Frontend:** HTML, CSS nebo Tailwind CSS, JavaScript
     
-- **Data:** JSON soubory pro čtyři textové sekce + JSON nabídka štěňat
+- **Data:** JSON soubory pro čtyři textové sekce
     
 - **AJAX:** načítání obsahu sekcí a seznamu štěňat
     
