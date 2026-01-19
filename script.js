@@ -36,50 +36,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // Simple Glitch Text Randomizer (Optional polish)
     const glitchText = document.querySelector('.glitch');
     if (glitchText) {
-        setInterval(() => {
-            const chance = Math.random();
-            if (chance > 0.95) {
-                glitchText.style.textShadow = '2px 0 red, -2px 0 blue';
-                setTimeout(() => {
-                    glitchText.style.textShadow = 'none';
-                }, 100);
-            }
-        }, 2000);
+        const triggerGlitch = () => {
+            // Apply Glitch
+            glitchText.classList.add('active');
+            glitchText.style.textShadow = '2px 0 red, -2px 0 blue';
+
+            // Remove Glitch after 200ms
+            setTimeout(() => {
+                glitchText.classList.remove('active');
+                glitchText.style.textShadow = 'none';
+            }, 200);
+
+            // Schedule next glitch (Random between 5s and 12s)
+            // This prevents rapid-fire glitches but ensures it happens often enough to notice.
+            const nextDelay = 5000 + Math.random() * 7000;
+            setTimeout(triggerGlitch, nextDelay);
+        };
+
+        // Start the loop
+        setTimeout(triggerGlitch, 3000);
     }
 
-    // AJAX - Fetch Mechanics Data
+    // Mechanics Data (Static Load)
     const mechanicsContainer = document.getElementById('mechanics-container');
     if (mechanicsContainer) {
-        fetch('/api/mechanics')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                data.forEach(mech => {
-                    const card = document.createElement('div');
-                    card.classList.add('mech-card');
+        const mechanicsData = [
+            {
+                title: 'HEALTH SYSTEM',
+                description: 'Complex health system with separate body parts (Head, Thorax, Stomach, Limbs). Damage to specific areas has different effects.',
+                stats: ['Head/Thorax = Critical', 'Fractures & Bleeding', 'Hydration/Energy']
+            },
+            {
+                title: 'BALLISTICS & ARMOR',
+                description: 'Realistic bullet physics. Armor stops bullets based on its Class vs the ammo\'s Penetration value. Not all ammo is equal.',
+                stats: ['Armor Classes 1-6', 'Bullet Penetration', 'Ricochet Chance']
+            },
+            {
+                title: 'SECURE CONTAINER',
+                description: 'A special pouch that keeps loot safe even after death. It is the only way to guarantee you keep specific items if you fail to extract.',
+                stats: ['Retain items on death', 'Cannot put guns inside', 'Alpha/Gamma/Kappa']
+            }
+        ];
 
-                    let statsHtml = '<ul class="stats-list">';
-                    mech.stats.forEach(stat => {
-                        statsHtml += `<li>${stat}</li>`;
-                    });
-                    statsHtml += '</ul>';
+        mechanicsData.forEach(mech => {
+            const card = document.createElement('div');
+            card.classList.add('mech-card');
 
-                    card.innerHTML = `
-                        <h3>${mech.title}</h3>
-                        <p>${mech.description}</p>
-                        ${statsHtml}
-                    `;
-                    mechanicsContainer.appendChild(card);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching mechanics:', error);
-                mechanicsContainer.innerHTML = '<p>Failed to load intel.</p>';
+            let statsHtml = '<ul class="stats-list">';
+            mech.stats.forEach(stat => {
+                statsHtml += `<li>${stat}</li>`;
             });
+            statsHtml += '</ul>';
+
+            card.innerHTML = `
+                <h3>${mech.title}</h3>
+                <p>${mech.description}</p>
+                ${statsHtml}
+            `;
+            mechanicsContainer.appendChild(card);
+        });
     }
 
     // Contact Form Handling
@@ -95,28 +110,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
 
-            fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.success) {
-                        formMessage.textContent = 'TRANSMISSION RECEIVED. STAND BY.';
-                        formMessage.className = 'success-message';
-                        contactForm.reset();
-                    } else {
-                        throw new Error(result.error || 'Transmission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+            // Simulate server handling with LocalStorage
+            setTimeout(() => {
+                try {
+                    const existingMessages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+                    const newMessage = {
+                        id: Date.now(),
+                        ...data,
+                        timestamp: new Date().toISOString()
+                    };
+                    existingMessages.push(newMessage);
+                    localStorage.setItem('contact_messages', JSON.stringify(existingMessages));
+
+                    // Success response simulation
+                    formMessage.textContent = 'TRANSMISSION RECEIVED. STAND BY.';
+                    formMessage.className = 'success-message';
+                    contactForm.reset();
+                    console.log('Message saved to LocalStorage database:', newMessage);
+                } catch (error) {
+                    console.error('Database Error:', error);
                     formMessage.textContent = 'TRANSMISSION FAILED. ENCRYPTION ERROR.';
                     formMessage.className = 'error-message';
-                });
+                }
+            }, 1000); // 1 second delay for realism
         });
     }
 });
